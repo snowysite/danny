@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dany | From Blacksnow</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-color: #000;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+    }
+    .orangered {
+      color: orangered;
+    }
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 2s ease forwards;
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0 }
+      100% { opacity: 1 }
+    }
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(45deg);
+      animation: floatUp 6s infinite ease-in;
+    }
+    .heart::before, .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+    .heart::before { top: -10px; left: 0; }
+    .heart::after { left: 10px; top: 0; }
+
+    @keyframes floatUp {
+      0% { bottom: 0; opacity: 1; }
+      100% { bottom: 100%; opacity: 0; }
+    }
+
+    .typewriter {
+      overflow: hidden;
+      border-right: .15em solid orangered;
+      white-space: nowrap;
+      animation: typing 4s steps(40, end), blink-caret .75s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: orangered }
+    }
+  </style>
+</head>
+<body class="text-center p-6 relative">
+
+  <!-- Music -->
+  <audio autoplay loop>
+    <source src="romantic.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- Floating Hearts Animation -->
+  <script>
+    for (let i = 0; i < 25; i++) {
+      let heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + '%';
+      heart.style.animationDuration = Math.random() * 5 + 3 + 's';
+      document.body.appendChild(heart);
+    }
+  </script>
+
+  <!-- Header -->
+  <h1 class="text-4xl font-bold orangered fade-in">Hey Dany 🌹</h1>
+  <p class="mt-2 fade-in typewriter">This is a love note from Blacksnow 💌</p>
+
+  <!-- Images -->
+  <div class="mt-8 flex justify-center gap-4 flex-wrap fade-in">
+    <img src="images/WhatsApp Image 2025-08-06 at 23.36.08_4f040111.jpg" alt="Dany" class="w-40 h-40 object-cover rounded-full border-4 border-orangered">
+    <img src="images/WhatsApp Image 2025-08-06 at 23.36.09_f38e4b0a.jpg" alt="Us" class="w-40 h-40 object-cover rounded-full border-4 border-orangered">
+  </div>
+
+  <!-- Scroll to Love Letter -->
+  <button onclick="document.getElementById('letter').scrollIntoView({ behavior: 'smooth' });"
+    class="mt-10 px-6 py-2 bg-orange-500 text-white rounded-full hover:bg-white hover:text-black transition">
+    From Me to You ❤️
+  </button>
+
+  <!-- Love Letter -->
+  <div id="letter" class="mt-14 max-w-2xl mx-auto fade-in">
+    <h2 class="text-2xl orangered font-semibold mb-4">Love Letter</h2>
+    <p class="text-lg leading-relaxed">
+      In every word you write and every story you read, I see the spark that lights up your beautiful soul.<br><br>
+      Your love for words mirrors the love I feel for you — deep, endless, and inspiring.<br><br>
+      You’re more than just a reader or writer — you're the story I never want to end.<br>
+      Every moment with you is a page I treasure, and every day, I fall deeper into the chapters of “us.”<br><br>
+      Always yours,<br>
+      <span class="orangered font-medium">Blacksnow</span>
+    </p>
+  </div>
+
+  <!-- Footer -->
+  <footer class="mt-20 text-sm text-gray-400 fade-in">Made with ❤️ by Nexora</footer>
+</body>
+</html>
+<script>
+  // Fade-in effect for elements
+  document.querySelectorAll('.fade-in').forEach(el => {
+    el.style.opacity = '0';
+    setTimeout(() => {
+      el.style.opacity = '1';
+      el.style.transition = 'opacity 2s ease';
+    }, 100);
+  });
+</script>
+<script>
+  // Typewriter effect for the love note
+  const typewriter = document.querySelector('.typewriter');
+  const text = typewriter.textContent;
+  typewriter.textContent = '';
+  let index = 0;
+
+  function type() {
+    if (index < text.length) {
+      typewriter.textContent += text.charAt(index);
+      index++;
+      setTimeout(type, 100);
+    }
+  }
+  
+  type();
+</script>
+<script>
+  // Heart animation
+  const hearts = document.querySelectorAll('.heart');
+  hearts.forEach(heart => {
+    heart.style.left = Math.random() * 100 + '%';
+    heart.style.animationDuration = Math.random() * 5 + 3 + 's';
+  });
+  // Scroll to letter on button click
+  document.querySelector('button').addEventListener('click', () => {
+    document.getElementById('letter').scrollIntoView({ behavior: 'smooth' });
+  });
+</script>
+<script>
+  // Auto-scroll to the love letter section on page load
+  window.onload = () => {
+    document.getElementById('letter').scrollIntoView({ behavior: 'smooth' });
+  };
+</script>
+<script>
+  // Ensure the audio plays automatically
+  document.querySelector('audio').play().catch(error => {
+    console.error('Audio playback failed:', error);
+  });
+</script>
+<script>
+  // Add a click event to the header to scroll to the love letter
+  document.querySelector('h1').addEventListener('click', () => {
+    document.getElementById('letter').scrollIntoView({ behavior: 'smooth' });
+  });
+</script>
+<script>
+  // Add a click event to the footer to scroll back to the top
+  document.querySelector('footer').addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
